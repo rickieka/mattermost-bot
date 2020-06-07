@@ -1,0 +1,27 @@
+# mattermost config
+mattermost:   
+    host: MATTERMOST_HOST_URL
+    websocket: MATTERMOST_WEBSOCKET
+    # channels to message to
+    channels:
+        debugging: CHANNEL_ID_TO_MESSAGE
+        team: CHANNEL_ID_TO_MESSAGE
+
+# bot config
+bot:
+    id: BOT_ACCOUNT_ID
+    access_token: BOT_TOKEN
+    name: Mattermost Bot
+
+# mysql configuration
+# you can add multiple database configurations here
+mysql:
+    - user: USER
+      password: PASSWORD
+      host: HOST
+      database: DATABASE
+
+logging:
+    # if enabled: false, the logger will write to stdout
+    enabled: false
+    logfile: /var/log/bot.log

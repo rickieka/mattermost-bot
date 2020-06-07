@@ -1,2 +1,11 @@
-## external config directory
-conf
+# config directory
+conf/config.yaml
+conf/users.csv
+
+# build output path
+build
+
+# vscode delve debugging config
+# exclude everything in .vscode except launch.json
+.vscode/*
+!.vscode/launch.json

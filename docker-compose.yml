@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+    mattermost:
+        container_name: mattermostA
+        image: mattermost/mattermost-preview
+        volumes:
+            - mattermost-data:/mm/mattermost-data
+        networks:
+            - botnetwork
+        ports:
+            - "8065:8065"
+
+    mysql:
+        container_name: mattermost-bot-mysql
+        image: mysql:5.6
+        environment:
+            MYSQL_ROOT_PASSWORD: 'root'
+        volumes:
+            - mattermost-bot-mysql-data:/var/lib/mysql
+            - ./conf/mysql/entrypoint:/docker-entrypoint-initdb.d
+        networks:
+            - botnetwork
+        ports:
+            - "33068:3306"
+
+volumes:
+    mattermost-data:
+        driver: local
+    mattermost-bot-mysql-data:
+        driver: local
+
+networks:
+    botnetwork:
